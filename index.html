@@ -169,8 +169,9 @@
             margin-top: 25px;
             flex-wrap: wrap;
             position: relative;
-            min-height: 140px;
+            min-height: 200px;
             width: 100%;
+            overflow: hidden;
         }
 
         .btn {
@@ -205,6 +206,7 @@
             max-width: 200px;
             margin: 0 auto;
             order: 2;
+            position: relative;
         }
 
         .btn-no {
@@ -215,6 +217,17 @@
             min-width: 140px;
             max-width: 180px;
             order: 1;
+            animation: moveNoButton 0.5s ease-out;
+            transition: all 0.5s ease;
+        }
+
+        /* Animações de movimento automático */
+        @keyframes moveNoButton {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(20px, -15px); }
+            50% { transform: translate(-15px, 20px); }
+            75% { transform: translate(15px, 15px); }
+            100% { transform: translate(0, 0); }
         }
 
         /* Animações de comemoração */
@@ -334,7 +347,7 @@
             
             .buttons-container {
                 gap: 12px;
-                min-height: 160px;
+                min-height: 220px;
             }
             
             .btn {
@@ -372,7 +385,7 @@
             }
             
             .buttons-container {
-                min-height: 180px;
+                min-height: 250px;
                 gap: 10px;
             }
             
@@ -537,13 +550,11 @@
         let attempts = 0;
         let yesCount = 0;
         let seconds = 0;
+        let moveInterval;
+        let autoMoveInterval;
         
         // Detectar se é dispositivo móvel
-        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-        
-        // Posição do botão Sim (fixa)
-        let safeZone;
         
         // Atualizar contador de tempo
         const timer = setInterval(() => {
@@ -551,108 +562,118 @@
             timeSpent.textContent = seconds;
         }, 1000);
         
-        // Atualizar a posição segura
-        function updateSafeZone() {
-            const yesBtnRect = yesBtn.getBoundingClientRect();
-            const container = document.querySelector('.buttons-container');
-            const containerRect = container.getBoundingClientRect();
-            
-            safeZone = {
-                x: yesBtnRect.left - containerRect.left,
-                y: yesBtnRect.top - containerRect.top,
-                width: yesBtnRect.width,
-                height: yesBtnRect.height,
-                padding: 40
-            };
-        }
-        
-        // Movimentar botão "Não" quando o mouse se aproximar (apenas desktop)
-        if (!isTouchDevice) {
-            noBtn.addEventListener('mouseover', () => {
-                moveNoButton();
-            });
-        }
-        
-        // Para dispositivos touch (celulares)
-        if (isTouchDevice) {
-            noBtn.addEventListener('touchstart', (e) => {
-                e.preventDefault();
-                attempts++;
-                attemptsCount.textContent = attempts;
-                moveNoButton();
-            }, { passive: false });
-            
-            noBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                attempts++;
-                attemptsCount.textContent = attempts;
-                moveNoButton();
-            });
-        } else {
-            noBtn.addEventListener('click', () => {
-                attempts++;
-                attemptsCount.textContent = attempts;
-                moveNoButton();
-            });
-        }
-        
-        // Função para verificar se uma posição está muito perto do botão Sim
-        function isTooCloseToYes(x, y, width, height) {
-            updateSafeZone();
-            
-            const forbiddenZone = {
-                left: safeZone.x - safeZone.padding,
-                right: safeZone.x + safeZone.width + safeZone.padding,
-                top: safeZone.y - safeZone.padding,
-                bottom: safeZone.y + safeZone.height + safeZone.padding
-            };
-            
-            const proposedRight = x + width;
-            const proposedBottom = y + height;
-            
-            const overlapsX = x < forbiddenZone.right && proposedRight > forbiddenZone.left;
-            const overlapsY = y < forbiddenZone.bottom && proposedBottom > forbiddenZone.top;
-            
-            return overlapsX && overlapsY;
-        }
-        
         // Função para mover o botão "Não" para uma posição aleatória
         function moveNoButton() {
             const container = document.querySelector('.buttons-container');
             const containerRect = container.getBoundingClientRect();
             const buttonRect = noBtn.getBoundingClientRect();
             
-            const maxX = containerRect.width - buttonRect.width - 10;
-            const maxY = containerRect.height - buttonRect.height - 10;
+            const maxX = containerRect.width - buttonRect.width - 20;
+            const maxY = containerRect.height - buttonRect.height - 20;
             
             const safeMaxX = Math.max(0, maxX);
             const safeMaxY = Math.max(0, maxY);
             
             let randomX, randomY;
             let attemptsCount = 0;
-            const maxAttempts = 20;
+            const maxAttempts = 10;
+            
+            // Atualizar posição do botão Sim
+            const yesRect = yesBtn.getBoundingClientRect();
+            const yesContainerX = yesRect.left - containerRect.left;
+            const yesContainerY = yesRect.top - containerRect.top;
             
             do {
                 randomX = Math.floor(Math.random() * safeMaxX);
                 randomY = Math.floor(Math.random() * safeMaxY);
                 attemptsCount++;
                 
-                if (attemptsCount >= maxAttempts) {
+                // Verificar se está muito perto do botão Sim
+                const distance = Math.sqrt(
+                    Math.pow(randomX + buttonRect.width/2 - (yesContainerX + yesRect.width/2), 2) +
+                    Math.pow(randomY + buttonRect.height/2 - (yesContainerY + yesRect.height/2), 2)
+                );
+                
+                // Se estiver longe o suficiente OU se já tentou muitas vezes
+                if (distance > 100 || attemptsCount >= maxAttempts) {
                     break;
                 }
-            } while (isTooCloseToYes(randomX, randomY, buttonRect.width, buttonRect.height));
+            } while (true);
             
             noBtn.style.left = `${randomX}px`;
             noBtn.style.top = `${randomY}px`;
-            noBtn.style.transition = 'left 0.3s ease, top 0.3s ease';
+            
+            // Adicionar animação CSS para movimento suave
+            noBtn.style.transition = 'left 0.5s ease, top 0.5s ease';
         }
         
-        // Movimentar periodicamente o botão "Não" 
-        const moveInterval = setInterval(() => {
-            if (!noBtn.disabled) {
+        // Função para mover o botão "Não" automaticamente em padrões
+        function autoMoveNoButton() {
+            const container = document.querySelector('.buttons-container');
+            const containerRect = container.getBoundingClientRect();
+            const buttonRect = noBtn.getBoundingClientRect();
+            
+            const maxX = containerRect.width - buttonRect.width - 20;
+            const maxY = containerRect.height - buttonRect.height - 20;
+            
+            const safeMaxX = Math.max(0, maxX);
+            const safeMaxY = Math.max(0, maxY);
+            
+            // Criar movimento mais dinâmico
+            const patterns = [
+                { x: 0, y: 0 },
+                { x: safeMaxX * 0.7, y: 0 },
+                { x: safeMaxX * 0.3, y: safeMaxY * 0.8 },
+                { x: safeMaxX, y: safeMaxY * 0.5 },
+                { x: 0, y: safeMaxY },
+                { x: safeMaxX * 0.8, y: safeMaxY },
+                { x: safeMaxX * 0.2, y: safeMaxY * 0.3 },
+                { x: safeMaxX * 0.6, y: safeMaxY * 0.1 }
+            ];
+            
+            const randomPattern = patterns[Math.floor(Math.random() * patterns.length)];
+            
+            noBtn.style.left = `${randomPattern.x}px`;
+            noBtn.style.top = `${randomPattern.y}px`;
+            noBtn.style.transition = 'left 0.7s ease, top 0.7s ease';
+        }
+        
+        // Função para movimento contínuo automático
+        function startAutoMovement() {
+            // Limpar qualquer intervalo existente
+            if (autoMoveInterval) clearInterval(autoMoveInterval);
+            
+            // Mover a cada 1.5 segundos (muito mais rápido!)
+            autoMoveInterval = setInterval(() => {
+                if (!noBtn.disabled) {
+                    autoMoveNoButton();
+                }
+            }, 800); // A cada 0.8 segundos!
+        }
+        
+        // Eventos para o botão "Não"
+        noBtn.addEventListener('mouseover', (e) => {
+            if (!isTouchDevice) {
+                e.preventDefault();
+                attempts++;
+                attemptsCount.textContent = attempts;
                 moveNoButton();
             }
-        }, isTouchDevice ? 2500 : 4000);
+        });
+        
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            attempts++;
+            attemptsCount.textContent = attempts;
+            moveNoButton();
+        }, { passive: false });
+        
+        noBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            attempts++;
+            attemptsCount.textContent = attempts;
+            moveNoButton();
+        });
         
         // Configurar animação de comemoração ao clicar no botão "Sim"
         yesBtn.addEventListener('click', () => {
@@ -677,12 +698,19 @@
             
             yesBtn.disabled = true;
             noBtn.disabled = true;
-            clearInterval(moveInterval);
+            
+            // Parar todos os movimentos
+            if (autoMoveInterval) clearInterval(autoMoveInterval);
+            if (moveInterval) clearInterval(moveInterval);
             
             yesBtn.innerHTML = '<i class="fas fa-heart"></i> Aceitou! <i class="fas fa-heart"></i>';
             yesBtn.style.background = 'linear-gradient(90deg, #2E7D32, #388E3C)';
             yesBtn.style.fontSize = 'clamp(0.9rem, 2.8vw, 1.2rem)';
             yesBtn.style.padding = '8px 16px';
+            
+            // Parar animação de movimento
+            noBtn.style.animation = 'none';
+            noBtn.style.transition = 'none';
             
             setTimeout(() => {
                 celebrationMessage.style.display = 'none';
@@ -795,26 +823,36 @@
             }
         }
         
-        // Inicializar
+        // Inicializar - POSIÇÃO INICIAL ALEATÓRIA
         setTimeout(() => {
-            updateSafeZone();
             moveNoButton();
+            // Iniciar movimento automático contínuo
+            startAutoMovement();
         }, 100);
+        
+        // Também mover periodicamente (além do movimento automático)
+        moveInterval = setInterval(() => {
+            if (!noBtn.disabled) {
+                moveNoButton();
+            }
+        }, 2000);
         
         // Ajustar quando a tela for redimensionada
         window.addEventListener('resize', function() {
             if (!noBtn.disabled) {
-                updateSafeZone();
                 moveNoButton();
             }
         });
         
-        // Prevenir comportamento padrão de toque longo
+        // Prevenir comportamento padrão de toque
         document.addEventListener('touchstart', function(e) {
             if (e.target === noBtn) {
                 e.preventDefault();
             }
         }, { passive: false });
+        
+        // Adicionar animação CSS para movimento constante
+        noBtn.style.animation = 'moveNoButton 4s infinite alternate';
     </script>
 </body>
 </html>
