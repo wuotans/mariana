@@ -23,7 +23,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 15px;
+            padding: 10px;
             touch-action: manipulation;
         }
 
@@ -31,13 +31,14 @@
             max-width: 900px;
             width: 100%;
             text-align: center;
-            padding: 25px 20px;
+            padding: 20px 15px;
             background-color: rgba(0, 0, 0, 0.4);
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
             position: relative;
             overflow: hidden;
             animation: fadeIn 1.5s ease-out;
+            margin: 10px;
         }
 
         @keyframes fadeIn {
@@ -46,7 +47,7 @@
         }
 
         .header {
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             animation: slideIn 1s ease-out;
         }
 
@@ -56,35 +57,37 @@
         }
 
         h1 {
-            font-size: clamp(1.8rem, 5vw, 2.8rem);
-            margin-bottom: 12px;
+            font-size: clamp(1.5rem, 4.5vw, 2.5rem);
+            margin-bottom: 10px;
             background: linear-gradient(90deg, #ff7e5f, #feb47b);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
             line-height: 1.2;
+            text-align: center;
         }
 
         .subtitle {
-            font-size: clamp(1rem, 3vw, 1.3rem);
+            font-size: clamp(0.9rem, 2.8vw, 1.2rem);
             color: #ffcc70;
             margin-bottom: 15px;
             font-weight: bold;
             line-height: 1.3;
+            text-align: center;
         }
 
         .text-content {
             background-color: rgba(255, 255, 255, 0.08);
             padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
             animation: textAppear 2s ease-out;
             line-height: 1.6;
-            font-size: clamp(1rem, 3vw, 1.2rem);
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
             position: relative;
-            border-left: 4px solid #ff7e5f;
-            text-align: left;
+            border-left: 3px solid #ff7e5f;
+            text-align: center;
         }
 
         @keyframes textAppear {
@@ -96,18 +99,19 @@
         /* Estilos para a imagem local */
         .image-container {
             display: flex;
-            justify-content: center;
-            margin: 25px 0;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
             width: 100%;
         }
 
         .feature-image {
-            max-width: min(500px, 90vw);
+            max-width: min(450px, 85vw);
             width: 100%;
             height: auto;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-            border: 3px solid rgba(255, 126, 95, 0.3);
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 126, 95, 0.3);
             transition: all 0.5s ease;
             animation: float 6s ease-in-out infinite;
             object-fit: cover;
@@ -115,7 +119,7 @@
 
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
+            50% { transform: translateY(-6px); }
             100% { transform: translateY(0px); }
         }
 
@@ -123,24 +127,25 @@
             font-style: italic;
             color: #ffcc70;
             margin-top: 10px;
-            font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+            font-size: clamp(0.85rem, 2.2vw, 1rem);
             line-height: 1.3;
+            text-align: center;
         }
 
         .heart-icon {
             color: #ff4757;
             animation: heartbeat 1.5s infinite;
-            margin: 0 5px;
+            margin: 0 3px;
         }
 
         @keyframes heartbeat {
             0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
+            50% { transform: scale(1.15); }
             100% { transform: scale(1); }
         }
 
         .question {
-            font-size: clamp(1.4rem, 4vw, 1.8rem);
+            font-size: clamp(1.2rem, 3.5vw, 1.6rem);
             margin: 25px 0;
             color: #ffcc70;
             font-weight: bold;
@@ -152,24 +157,25 @@
 
         @keyframes pulse {
             0% { transform: scale(1); }
-            50% { transform: scale(1.03); }
+            50% { transform: scale(1.02); }
             100% { transform: scale(1); }
         }
 
         .buttons-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
+            align-items: center;
+            gap: 15px;
+            margin-top: 25px;
             flex-wrap: wrap;
             position: relative;
-            min-height: 150px;
+            min-height: 140px;
             width: 100%;
         }
 
         .btn {
-            padding: 16px 30px;
-            font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+            padding: 10px 20px;
+            font-size: clamp(0.9rem, 2.8vw, 1.1rem);
             border: none;
             border-radius: 50px;
             cursor: pointer;
@@ -178,12 +184,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            min-width: 160px;
-            min-height: 60px;
+            gap: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            min-height: 45px;
             touch-action: manipulation;
             user-select: none;
+            flex-shrink: 0;
+            position: relative;
         }
 
         .btn:active {
@@ -193,22 +200,21 @@
         .btn-yes {
             background: linear-gradient(90deg, #4CAF50, #8BC34A);
             color: white;
-            z-index: 10;
-            position: relative;
+            z-index: 5;
+            min-width: 160px;
+            max-width: 200px;
+            margin: 0 auto;
+            order: 2;
         }
 
         .btn-no {
             background: linear-gradient(90deg, #f44336, #ff7961);
             color: white;
+            z-index: 10;
             position: absolute;
-            z-index: 5;
-            touch-action: none;
-        }
-
-        /* Melhorias para mobile no botão "Não" */
-        .btn-no-mobile {
-            position: absolute !important;
-            transition: all 0.2s ease !important;
+            min-width: 140px;
+            max-width: 180px;
+            order: 1;
         }
 
         /* Animações de comemoração */
@@ -225,18 +231,18 @@
 
         .confetti {
             position: absolute;
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             background-color: #f0f;
             top: -20px;
         }
 
         .firework {
             position: absolute;
-            width: 5px;
-            height: 5px;
+            width: 4px;
+            height: 4px;
             border-radius: 50%;
-            box-shadow: 0 0 10px 5px #ff0;
+            box-shadow: 0 0 8px 4px #ff0;
         }
 
         .message {
@@ -246,15 +252,15 @@
             transform: translate(-50%, -50%) scale(0);
             background: rgba(0, 0, 0, 0.9);
             color: white;
-            padding: 30px;
-            border-radius: 20px;
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            padding: 25px 20px;
+            border-radius: 15px;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
             text-align: center;
             z-index: 1001;
             border: 3px solid #4CAF50;
             display: none;
             animation: popUp 0.5s forwards;
-            max-width: 85%;
+            max-width: 90%;
             width: 90%;
             line-height: 1.3;
         }
@@ -264,58 +270,62 @@
         }
 
         .emoji {
-            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-size: clamp(2rem, 6vw, 3.5rem);
             display: block;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .stats {
-            margin-top: 25px;
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            margin-top: 20px;
+            font-size: clamp(0.85rem, 2.2vw, 1rem);
             color: #aaa;
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
         .stat-item {
             background-color: rgba(255, 255, 255, 0.05);
-            padding: 12px 18px;
-            border-radius: 10px;
-            min-width: 140px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            min-width: 120px;
             flex: 1;
+            text-align: center;
         }
 
         .stat-value {
-            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-size: clamp(1.3rem, 3.5vw, 1.8rem);
             font-weight: bold;
             color: #4CAF50;
             display: block;
         }
 
         .footer {
-            margin-top: 30px;
+            margin-top: 25px;
             color: #777;
-            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            font-size: clamp(0.75rem, 1.8vw, 0.85rem);
             line-height: 1.4;
+            text-align: center;
             padding: 0 10px;
         }
 
         .clover {
             color: #4CAF50;
-            margin: 0 5px;
+            margin: 0 3px;
+            font-size: 0.9em;
         }
 
         .text-paragraph {
             margin-bottom: 15px;
             font-size: inherit;
+            text-align: center;
         }
 
-        /* Responsividade melhorada */
+        /* Responsividade */
         @media (max-width: 768px) {
             .container {
-                padding: 20px 15px;
+                padding: 18px 12px;
             }
             
             .text-content {
@@ -323,82 +333,127 @@
             }
             
             .buttons-container {
-                gap: 15px;
-                min-height: 180px;
+                gap: 12px;
+                min-height: 160px;
             }
             
             .btn {
-                padding: 14px 25px;
-                min-width: 140px;
-                min-height: 55px;
+                padding: 9px 18px;
+                min-height: 42px;
+                font-size: clamp(0.85rem, 2.5vw, 1rem);
+            }
+            
+            .btn-yes {
+                min-width: 150px;
+                max-width: 180px;
+            }
+            
+            .btn-no {
+                min-width: 130px;
+                max-width: 160px;
             }
             
             .stat-item {
-                min-width: 120px;
-                padding: 10px 15px;
+                min-width: 110px;
+                padding: 8px 12px;
             }
         }
 
         @media (max-width: 480px) {
             body {
-                padding: 10px;
+                padding: 8px;
+                align-items: flex-start;
             }
             
             .container {
-                padding: 18px 12px;
-                border-radius: 15px;
+                padding: 15px 10px;
+                margin: 5px 0;
+                border-radius: 12px;
             }
             
             .buttons-container {
-                flex-direction: column;
-                align-items: center;
-                min-height: 220px;
-                gap: 15px;
+                min-height: 180px;
+                gap: 10px;
             }
             
             .btn {
-                width: 90%;
-                max-width: 250px;
-                padding: 16px 20px;
+                padding: 8px 16px;
+                min-height: 40px;
+                font-size: 0.9rem;
+            }
+            
+            .btn-yes {
+                min-width: 140px;
+                max-width: 160px;
+                order: 2;
             }
             
             .btn-no {
-                position: absolute !important;
+                min-width: 120px;
+                max-width: 140px;
+                order: 1;
+                position: absolute;
             }
             
             .stats {
                 flex-direction: column;
                 align-items: center;
-                gap: 12px;
+                gap: 10px;
             }
             
             .stat-item {
-                width: 90%;
-                max-width: 250px;
+                width: 85%;
+                max-width: 220px;
             }
             
             .message {
-                padding: 25px 20px;
+                padding: 20px 15px;
                 width: 95%;
+                max-width: 95%;
+            }
+            
+            .feature-image {
+                max-width: 90vw;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .btn {
+                padding: 7px 14px;
+                min-height: 38px;
+                font-size: 0.85rem;
+            }
+            
+            .btn-yes {
+                min-width: 130px;
+                max-width: 150px;
+            }
+            
+            .btn-no {
+                min-width: 110px;
+                max-width: 130px;
+            }
+            
+            .question {
+                font-size: 1.1rem;
+            }
+            
+            h1 {
+                font-size: 1.4rem;
             }
         }
 
         @media (hover: hover) {
             .btn-yes:hover {
-                transform: scale(1.1);
-                box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+                transform: scale(1.05);
+                box-shadow: 0 6px 16px rgba(76, 175, 80, 0.4);
             }
             
             .feature-image:hover {
-                transform: scale(1.05);
-                box-shadow: 0 15px 35px rgba(255, 126, 95, 0.4);
+                transform: scale(1.03);
+                box-shadow: 0 12px 28px rgba(255, 126, 95, 0.4);
                 border-color: rgba(255, 126, 95, 0.7);
             }
-        }
-
-        /* Evitar zoom em input no iOS */
-        input, textarea, select, button {
-            font-size: 16px;
         }
     </style>
 </head>
@@ -416,12 +471,10 @@
             
             <!-- Imagem local na raiz -->
             <div class="image-container">
-                <div>
-                    <img src="Semtitulo.jpeg" 
-                         alt="Para Mariana" 
-                         class="feature-image">
-                    <p class="image-caption"><i class="fas fa-heart heart-icon"></i> Para a Mariana mais Mariana do mundo! <i class="fas fa-heart heart-icon"></i></p>
-                </div>
+                <img src="Semtitulo.jpeg" 
+                     alt="Para Mariana" 
+                     class="feature-image">
+                <p class="image-caption"><i class="fas fa-heart heart-icon"></i> Para a Mariana mais especial do mundo! <i class="fas fa-heart heart-icon"></i></p>
             </div>
             
             <p class="text-paragraph">Essa é a Mariana ☝️ Viu como ela é linda e engraçada?</p>
@@ -467,7 +520,7 @@
     <div class="message" id="celebrationMessage">
         <span class="emoji">💖🎉🥰</span>
         Que maravilha! Aceitou!<br>
-        <span style="font-size: clamp(1rem, 3vw, 1.5rem); color: #ffcc70;">Estou ansioso para comer o seu cuzinho no dia 17/01!</span>
+        <span style="font-size: clamp(0.9rem, 2.5vw, 1.3rem); color: #ffcc70;">Estou ansioso para comer o seu cuzinho no dia 17/01!</span>
     </div>
 
     <script>
@@ -489,11 +542,29 @@
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
         
+        // Posição do botão Sim (fixa)
+        let safeZone;
+        
         // Atualizar contador de tempo
         const timer = setInterval(() => {
             seconds++;
             timeSpent.textContent = seconds;
         }, 1000);
+        
+        // Atualizar a posição segura
+        function updateSafeZone() {
+            const yesBtnRect = yesBtn.getBoundingClientRect();
+            const container = document.querySelector('.buttons-container');
+            const containerRect = container.getBoundingClientRect();
+            
+            safeZone = {
+                x: yesBtnRect.left - containerRect.left,
+                y: yesBtnRect.top - containerRect.top,
+                width: yesBtnRect.width,
+                height: yesBtnRect.height,
+                padding: 40
+            };
+        }
         
         // Movimentar botão "Não" quando o mouse se aproximar (apenas desktop)
         if (!isTouchDevice) {
@@ -504,26 +575,20 @@
         
         // Para dispositivos touch (celulares)
         if (isTouchDevice) {
-            // Movimentar quando o dedo se aproximar (touchstart)
             noBtn.addEventListener('touchstart', (e) => {
                 e.preventDefault();
                 attempts++;
                 attemptsCount.textContent = attempts;
-                moveNoButtonMobile();
-            });
+                moveNoButton();
+            }, { passive: false });
             
-            // Também movimentar quando tentar tocar
             noBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 attempts++;
                 attemptsCount.textContent = attempts;
-                moveNoButtonMobile();
+                moveNoButton();
             });
-            
-            // Movimentar quando o dedo passar por cima (touchmove não funciona bem para isso)
-            // Vamos usar um intervalo para movimentar periodicamente também
         } else {
-            // Para desktop, comportamento normal
             noBtn.addEventListener('click', () => {
                 attempts++;
                 attemptsCount.textContent = attempts;
@@ -531,121 +596,98 @@
             });
         }
         
-        // Função para mover o botão "Não" para uma posição aleatória (desktop)
+        // Função para verificar se uma posição está muito perto do botão Sim
+        function isTooCloseToYes(x, y, width, height) {
+            updateSafeZone();
+            
+            const forbiddenZone = {
+                left: safeZone.x - safeZone.padding,
+                right: safeZone.x + safeZone.width + safeZone.padding,
+                top: safeZone.y - safeZone.padding,
+                bottom: safeZone.y + safeZone.height + safeZone.padding
+            };
+            
+            const proposedRight = x + width;
+            const proposedBottom = y + height;
+            
+            const overlapsX = x < forbiddenZone.right && proposedRight > forbiddenZone.left;
+            const overlapsY = y < forbiddenZone.bottom && proposedBottom > forbiddenZone.top;
+            
+            return overlapsX && overlapsY;
+        }
+        
+        // Função para mover o botão "Não" para uma posição aleatória
         function moveNoButton() {
             const container = document.querySelector('.buttons-container');
             const containerRect = container.getBoundingClientRect();
             const buttonRect = noBtn.getBoundingClientRect();
             
-            // Calcular posições máximas para manter o botão dentro do container
             const maxX = containerRect.width - buttonRect.width - 10;
             const maxY = containerRect.height - buttonRect.height - 10;
             
-            // Garantir valores positivos
             const safeMaxX = Math.max(0, maxX);
             const safeMaxY = Math.max(0, maxY);
             
-            // Gerar posições aleatórias
-            const randomX = Math.floor(Math.random() * safeMaxX);
-            const randomY = Math.floor(Math.random() * safeMaxY);
+            let randomX, randomY;
+            let attemptsCount = 0;
+            const maxAttempts = 20;
             
-            // Aplicar novas posições
+            do {
+                randomX = Math.floor(Math.random() * safeMaxX);
+                randomY = Math.floor(Math.random() * safeMaxY);
+                attemptsCount++;
+                
+                if (attemptsCount >= maxAttempts) {
+                    break;
+                }
+            } while (isTooCloseToYes(randomX, randomY, buttonRect.width, buttonRect.height));
+            
             noBtn.style.left = `${randomX}px`;
             noBtn.style.top = `${randomY}px`;
-            
-            // Adicionar animação de movimento
             noBtn.style.transition = 'left 0.3s ease, top 0.3s ease';
         }
         
-        // Função otimizada para mobile
-        function moveNoButtonMobile() {
-            const container = document.querySelector('.buttons-container');
-            const containerRect = container.getBoundingClientRect();
-            const buttonRect = noBtn.getBoundingClientRect();
-            
-            // Para mobile, mover mais longe
-            const maxX = containerRect.width - buttonRect.width - 20;
-            const maxY = containerRect.height - buttonRect.height - 20;
-            
-            // Garantir valores positivos
-            const safeMaxX = Math.max(0, maxX);
-            const safeMaxY = Math.max(0, maxY);
-            
-            // Gerar posições aleatórias mais extremas
-            const randomX = Math.floor(Math.random() * safeMaxX);
-            const randomY = Math.floor(Math.random() * safeMaxY);
-            
-            // Aplicar novas posições
-            noBtn.style.left = `${randomX}px`;
-            noBtn.style.top = `${randomY}px`;
-            
-            // Animação mais rápida para mobile
-            noBtn.style.transition = 'left 0.2s ease, top 0.2s ease';
-            
-            // Adicionar classe especial para mobile
-            noBtn.classList.add('btn-no-mobile');
-        }
-        
-        // Movimentar periodicamente o botão "Não" em dispositivos móveis
-        if (isTouchDevice) {
-            setInterval(() => {
-                if (!noBtn.disabled) {
-                    moveNoButtonMobile();
-                }
-            }, 3000); // Mover a cada 3 segundos
-        } else {
-            setInterval(() => {
-                if (!noBtn.disabled) {
-                    moveNoButton();
-                }
-            }, 5000);
-        }
+        // Movimentar periodicamente o botão "Não" 
+        const moveInterval = setInterval(() => {
+            if (!noBtn.disabled) {
+                moveNoButton();
+            }
+        }, isTouchDevice ? 2500 : 4000);
         
         // Configurar animação de comemoração ao clicar no botão "Sim"
         yesBtn.addEventListener('click', () => {
             yesCount++;
             yesClicks.textContent = yesCount;
             
-            // Alterar mensagem de comemoração
             celebrationMessage.innerHTML = `
                 <span class="emoji">💖🎉🥰</span>
                 Que maravilha! Aceitou!<br>
-                <span style="font-size: clamp(1rem, 3vw, 1.5rem); color: #ffcc70;">Estou ansioso para comer o seu cuzinho no dia 17/01!</span>
+                <span style="font-size: clamp(0.9rem, 2.5vw, 1.3rem); color: #ffcc70;">Estou ansioso para comer o seu cuzinho no dia 17/01!</span>
                 <br><br>
-                <span style="font-size: clamp(0.9rem, 2.5vw, 1.2rem); color: #feb47b;">
+                <span style="font-size: clamp(0.85rem, 2.2vw, 1.1rem); color: #feb47b;">
                     <i class="fas fa-heart"></i> Prometo que será inesquecível! <i class="fas fa-heart"></i>
                 </span>
             `;
             
-            // Mostrar mensagem de comemoração
             celebrationMessage.style.display = 'block';
-            
-            // Mostrar área de comemoração
             celebration.style.display = 'block';
-            
-            // Criar confetes
             createConfetti();
-            
-            // Criar fogos de artifício
             createFireworks();
-            
-            // Reproduzir som de comemoração (se permitido)
             playCelebrationSound();
             
-            // Desabilitar botões após a comemoração
             yesBtn.disabled = true;
             noBtn.disabled = true;
+            clearInterval(moveInterval);
             
-            // Mudar texto do botão Sim
             yesBtn.innerHTML = '<i class="fas fa-heart"></i> Aceitou! <i class="fas fa-heart"></i>';
             yesBtn.style.background = 'linear-gradient(90deg, #2E7D32, #388E3C)';
+            yesBtn.style.fontSize = 'clamp(0.9rem, 2.8vw, 1.2rem)';
+            yesBtn.style.padding = '8px 16px';
             
-            // Esconder mensagem após 7 segundos
             setTimeout(() => {
                 celebrationMessage.style.display = 'none';
             }, 7000);
             
-            // Reduzir confetes após 10 segundos
             setTimeout(() => {
                 celebration.innerHTML = '';
             }, 10000);
@@ -654,20 +696,18 @@
         // Função para criar confetes
         function createConfetti() {
             const colors = ['#ff0000', '#ff6b6b', '#ff4757', '#ff3838', '#ff9ff3', '#f368e0'];
+            const confettiCount = isTouchDevice ? 100 : 150;
             
-            for (let i = 0; i < 150; i++) {
+            for (let i = 0; i < confettiCount; i++) {
                 const confetti = document.createElement('div');
                 confetti.classList.add('confetti');
                 
-                // Posição aleatória
                 const startX = Math.random() * window.innerWidth;
                 confetti.style.left = `${startX}px`;
                 
-                // Cor aleatória
                 const color = colors[Math.floor(Math.random() * colors.length)];
                 confetti.style.backgroundColor = color;
                 
-                // Forma aleatória (coração ou círculo)
                 if (Math.random() > 0.7) {
                     confetti.style.borderRadius = '0%';
                     confetti.style.transform = 'rotate(45deg)';
@@ -676,15 +716,12 @@
                     confetti.style.borderRadius = '50%';
                 }
                 
-                // Tamanho aleatório
-                const size = Math.random() * 12 + 6;
+                const size = Math.random() * 10 + 5;
                 confetti.style.width = `${size}px`;
                 confetti.style.height = `${size}px`;
                 
-                // Adicionar ao container de comemoração
                 celebration.appendChild(confetti);
                 
-                // Animação de queda
                 const animation = confetti.animate([
                     { transform: `translateY(0px) rotate(0deg)`, opacity: 1 },
                     { transform: `translateY(${window.innerHeight}px) rotate(${360 + Math.random() * 360}deg)`, opacity: 0 }
@@ -693,7 +730,6 @@
                     delay: Math.random() * 1000
                 });
                 
-                // Remover confete após animação
                 animation.onfinish = () => {
                     confetti.remove();
                 };
@@ -702,63 +738,55 @@
         
         // Função para criar fogos de artifício
         function createFireworks() {
-            for (let i = 0; i < 30; i++) {
-                // Atraso aleatório para os fogos
+            const fireworkCount = isTouchDevice ? 20 : 30;
+            
+            for (let i = 0; i < fireworkCount; i++) {
                 setTimeout(() => {
                     const firework = document.createElement('div');
                     firework.classList.add('firework');
                     
-                    // Posição aleatória
                     const posX = Math.random() * window.innerWidth;
                     const posY = Math.random() * window.innerHeight;
                     firework.style.left = `${posX}px`;
                     firework.style.top = `${posY}px`;
                     
-                    // Cor aleatória (tons de vermelho/rosa)
-                    const hue = Math.random() * 30 + 330; // Tons de vermelho/rosa
-                    firework.style.boxShadow = `0 0 15px 8px hsl(${hue}, 100%, 60%)`;
+                    const hue = Math.random() * 30 + 330;
+                    firework.style.boxShadow = `0 0 12px 6px hsl(${hue}, 100%, 60%)`;
                     
                     celebration.appendChild(firework);
                     
-                    // Animação do fogo de artifício
                     const explode = firework.animate([
                         { transform: 'scale(0.5)', opacity: 1 },
-                        { transform: 'scale(4)', opacity: 0 }
+                        { transform: 'scale(3.5)', opacity: 0 }
                     ], {
-                        duration: 1000
+                        duration: 800
                     });
                     
-                    // Remover após animação
                     explode.onfinish = () => {
                         firework.remove();
                     };
-                }, i * 150); // Atraso entre cada fogo
+                }, i * 180);
             }
         }
         
         // Função para reproduzir som de comemoração
         function playCelebrationSound() {
             try {
-                // Criar contexto de áudio
                 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                
-                // Criar oscilador para som de comemoração
                 const oscillator = audioContext.createOscillator();
                 const gainNode = audioContext.createGain();
                 
                 oscillator.connect(gainNode);
                 gainNode.connect(audioContext.destination);
                 
-                // Configurar som romântico
-                oscillator.frequency.setValueAtTime(523.25, audioContext.currentTime); // Nota C5
-                oscillator.frequency.setValueAtTime(659.25, audioContext.currentTime + 0.1); // Nota E5
-                oscillator.frequency.setValueAtTime(783.99, audioContext.currentTime + 0.2); // Nota G5
-                oscillator.frequency.setValueAtTime(1046.50, audioContext.currentTime + 0.3); // Nota C6
+                oscillator.frequency.setValueAtTime(523.25, audioContext.currentTime);
+                oscillator.frequency.setValueAtTime(659.25, audioContext.currentTime + 0.1);
+                oscillator.frequency.setValueAtTime(783.99, audioContext.currentTime + 0.2);
+                oscillator.frequency.setValueAtTime(1046.50, audioContext.currentTime + 0.3);
                 
                 gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
                 gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.8);
                 
-                // Reproduzir som
                 oscillator.start();
                 oscillator.stop(audioContext.currentTime + 0.8);
                 
@@ -767,22 +795,22 @@
             }
         }
         
-        // Inicializar posição do botão "Não"
-        if (isTouchDevice) {
-            moveNoButtonMobile();
-        } else {
+        // Inicializar
+        setTimeout(() => {
+            updateSafeZone();
             moveNoButton();
-        }
+        }, 100);
+        
+        // Ajustar quando a tela for redimensionada
+        window.addEventListener('resize', function() {
+            if (!noBtn.disabled) {
+                updateSafeZone();
+                moveNoButton();
+            }
+        });
         
         // Prevenir comportamento padrão de toque longo
         document.addEventListener('touchstart', function(e) {
-            if (e.target === noBtn) {
-                e.preventDefault();
-            }
-        }, { passive: false });
-        
-        // Melhorar experiência tátil
-        document.addEventListener('touchmove', function(e) {
             if (e.target === noBtn) {
                 e.preventDefault();
             }
